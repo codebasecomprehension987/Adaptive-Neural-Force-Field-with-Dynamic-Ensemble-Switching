@@ -1,0 +1,98 @@
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+pip-wheel-metadata/
+MANIFEST
+
+# ── Virtual environments ───────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+.env
+
+# ── JAX / XLA compilation caches ──────────────────────────────────────────────
+.jax_cache/
+jax_cache/
+xla_cache/
+__pycache__/
+
+# ── CUDA build artefacts ───────────────────────────────────────────────────────
+*.so
+*.o
+*.a
+*.ptx
+*.cubin
+*.fatbin
+*.nvvm
+src/kernels/*.so
+src/kernels/build/
+
+# ── Compiled C extensions ─────────────────────────────────────────────────────
+*.cpython-*.so
+anff/_cuda*.so
+
+# ── Model checkpoints & large data ────────────────────────────────────────────
+checkpoints/
+*.npz
+*.npy
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+data/raw/
+data/processed/
+
+# ── Benchmark results ─────────────────────────────────────────────────────────
+benchmarks/*.csv
+benchmarks/*.json
+
+# ── Test / coverage artefacts ─────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+*.coveragerc
+
+# ── Type-checking caches ──────────────────────────────────────────────────────
+.mypy_cache/
+.dmypy.json
+.pytype/
+
+# ── Linter caches ─────────────────────────────────────────────────────────────
+.ruff_cache/
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── Docs build output ─────────────────────────────────────────────────────────
+site/
+docs/_build/
+
+# ── OS / IDE ──────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ── Environment / secrets ─────────────────────────────────────────────────────
+.env
+.envrc
+*.key
+*.pem
+
+# ── Profiling ─────────────────────────────────────────────────────────────────
+*.prof
+*.lprof
