@@ -1,0 +1,38 @@
+# configs/tpu_pod.yaml
+# Hyper-parameters for a 64-TPU v4 pod run.
+# Override default.yaml values as needed.
+
+# --- Neighbour list ---
+cutoff_radius: 5.0
+max_neighbors: 64
+
+# --- Model architecture ---
+n_mp_layers: 4
+feature_dim: 256
+
+# --- Ensemble switcher ---
+ensemble:
+  nnp_max_atoms: 500
+  uncertainty_threshold: 0.10   # tighter threshold on pod — can afford GFN2 checks
+
+# --- Sharding ---
+device_count: 64                 # full v4-64 pod
+# Adjacency tensor is REPLICATED across all 64 devices.
+# Memory cost: N_atoms × max_neighbors × 64 × 4 B
+# For N=2000, k=64: 2000 × 64 × 64 × 4 ≈ 32 MB per device (acceptable).
+# Set rematerialise_graph: true to trade memory for recomputation instead.
+rematerialise_graph: false
+
+# --- Training ---
+learning_rate: 3.0e-4
+steps: 50000
+n_train: 100000
+batch_size: 64                   # systems per gradient step (spread across 64 TPUs)
+
+# --- Checkpointing ---
+checkpoint_dir: gs://anff-checkpoints/pod64/
+log_every: 500
+save_every: 5000
+
+# --- Profiling ---
+profile_steps: [100, 200]        # XLA profiler capture windows
