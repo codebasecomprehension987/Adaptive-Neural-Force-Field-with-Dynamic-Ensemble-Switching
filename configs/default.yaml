@@ -1,0 +1,28 @@
+# configs/default.yaml
+# Default hyper-parameters for the Adaptive Neural Force Field
+
+# --- Neighbour list ---
+cutoff_radius: 5.0        # Å
+max_neighbors: 64         # K in the spec: max neighbours per atom
+
+# --- Model architecture ---
+n_mp_layers: 3            # message-passing iterations
+feature_dim: 128          # node-feature width D
+
+# --- Ensemble switcher ---
+ensemble:
+  nnp_max_atoms: 500       # use NNP for systems <= this size
+  uncertainty_threshold: 0.15   # eV; above this → GFN2 fallback
+
+# --- Sharding ---
+device_count: 1            # set to 64 for full TPU pod
+
+# --- Training ---
+learning_rate: 1.0e-3
+steps: 1000
+n_train: 256
+batch_size: 8
+
+# --- Checkpointing ---
+checkpoint_dir: checkpoints/
+log_every: 50
